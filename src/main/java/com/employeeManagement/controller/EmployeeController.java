@@ -39,6 +39,7 @@ public class EmployeeController {
 		}
 		employeeTextAreaId.setText(employeeNames);
 
+		System.err.println("adding git commit ");
 	}
 	@FXML
 	public void getAlllookup() {
