@@ -2,7 +2,7 @@ package com.employeeManagement.util;
 
 public class ColumnName {
 
-	// employee column name
+	/// employee column name
 	public static final String EMPLOYEE_ID = "emp_id";
 	public static final String EMPLOYEE_NAME = "name";
 

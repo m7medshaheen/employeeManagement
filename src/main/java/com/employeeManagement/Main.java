@@ -15,7 +15,7 @@ public class Main extends Application {
 			
 			
 			
-			//Parent parent = FXMLLoader.load(getClass().getResource("/com/employeeManagement/view/EmployeeView.fxml"));
+			//Parent parent = FXMLLoader.load(getClass().getResource("/com//employeeManagement/view/EmployeeView.fxml"));
 			Parent parent = FXMLLoader.load(getClass().getResource("/com/employeeManagement/view/Main1.fxml"));
 			
 			Scene scene = new Scene(parent,750,500);
