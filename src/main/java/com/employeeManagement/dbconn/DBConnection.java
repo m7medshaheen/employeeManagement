@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 public class DBConnection {
-
-	public static final String DRIVER_PROP = "MYSQLJDBC.driver";
-	public static final String DB_NAME_PROP = "MYSQLJDBC.db_name";
-	public static final String DB_USER_NAME_PROP = "MYSQLJDBC.username";
-	public static final String DB_PASSWORD_PROP = "MYSQLJDBC.password";
-	public static final String URL_PROP = "MYSQLJDBC.url";
+//
+//	public static final String DRIVER_PROP = "MYSQLJDBC.driver";
+//	public static final String DB_NAME_PROP = "MYSQLJDBC.db_name";
+//	public static final String DB_USER_NAME_PROP = "MYSQLJDBC.username";
+//	public static final String DB_PASSWORD_PROP = "MYSQLJDBC.password";
+//	public static final String URL_PROP = "MYSQLJDBC.url";
 //	public static final String UNICODE = "?useUnicode=yes&characterEncoding=UTF-8";
 	
 	
@@ -39,16 +39,18 @@ public class DBConnection {
 		try {
 			Properties prop = new DBConnection().loadPropertiesFile();
 			 
-			String driverClass = prop.getProperty(DRIVER_PROP);
-			String dbName = prop.getProperty(DB_NAME_PROP);
-			String userName = prop.getProperty(DB_USER_NAME_PROP);
-			String password = prop.getProperty(DB_PASSWORD_PROP);
-			String url = prop.getProperty(URL_PROP)+dbName;
+			String driverClass = prop.getProperty("MYSQLJDBC.driver");
+			String dbName = prop.getProperty("MYSQLJDBC.db_name");
+			String userName = prop.getProperty("MYSQLJDBC.username");
+			String password = prop.getProperty("MYSQLJDBC.password");
+			String url = prop.getProperty("MYSQLJDBC.url")+dbName;
+			
 			Class.forName(driverClass);
 			connection = DriverManager.getConnection(url, userName, password);
+			System.out.println("connected");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("DB Not Connected");
 		}
 
 	}
@@ -86,12 +88,13 @@ public class DBConnection {
 	}
 	
 	
-	public static void main(String[] args) throws Exception {
-		Properties prop = new DBConnection().loadPropertiesFile();
-		 
-		String driverClass = prop.getProperty("MYSQLJDBC.driver");
-		System.out.println("driverClass: "+driverClass);
-		
-	}
- 
+//	public static void main(String[] args) throws Exception {
+//		Properties prop = new DBConnection().loadPropertiesFile();
+//		 
+//		String driverClass = prop.getProperty("MYSQLJDBC.driver");
+//		System.out.println("driverClass: "+driverClass);
+//		System.err.println("dbName====>"+prop.getProperty("MYSQLJDBC.db_name"));
+//		
+//	}
+// 
 }
