@@ -100,7 +100,7 @@ public class UpdateDelete_Controller implements Initializable {
 		job_group_id.setConverter(new StringConverter<Lookup>() {
 
 			@Override
-			public String toString(Lookup object) {
+			public String toString(Lookup  object) {
 
 				return object.getName();
 			}
