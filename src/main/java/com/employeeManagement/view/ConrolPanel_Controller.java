@@ -29,7 +29,7 @@ public class ConrolPanel_Controller {
 		// DBConnection.getDB().getConnection();
 
 		Parent root = FXMLLoader.load(getClass().getResource("InsertEmployee.fxml"));
-		Scene scene = new Scene(root, 1034, 550);
+		Scene scene = new Scene(root, 1300, 650);
 		// scene.getStylesheets().add(getClass().getResource("/com/employeeManagement/application.css").toExternalForm());
 		primaryStage.setScene(scene);
 		primaryStage.show();

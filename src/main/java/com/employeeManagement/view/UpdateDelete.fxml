@@ -9,6 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ComboBox?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeeManagement.view.UpdateDelete_Controller">
 	<children>
@@ -104,16 +105,16 @@
 						<DropShadow />
 					</effect>
 				</TextField>
-				<TextField fx:id="job_group_id" layoutX="538.0" layoutY="337.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #7FFFD4;">
+				<ComboBox  fx:id="job_group_id" onAction="#getEmpCareerId" layoutX="538.0" layoutY="337.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #7FFFD4;">
 					<effect>
 						<DropShadow />
 					</effect>
-				</TextField>
-				<TextField fx:id="career_id" layoutX="538.0" layoutY="400.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #7FFFD4;">
+				</ComboBox>
+				<ComboBox fx:id="career_id" layoutX="538.0" layoutY="400.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #7FFFD4;">
 					<effect>
 						<DropShadow />
 					</effect>
-				</TextField>
+				</ComboBox>
 				<ImageView fitHeight="333.0" fitWidth="200.0" layoutX="789.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
 				<Button layoutX="788.0" layoutY="476.0" mnemonicParsing="false" onAction="#deleteEmployee" prefHeight="39.0" prefWidth="192.0" style="-fx-background-color: rgb(252,233,79);" text="Delete Employee" textAlignment="CENTER" textFill="#f81515">
 					<effect>
@@ -128,11 +129,11 @@
 						<Image url="@../images/people-309068_1280.png" />
 					</image>
 				</ImageView>
-				<TextField fx:id="type_id" layoutX="112.0" layoutY="224.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #7FFFD4;">
+				<ComboBox fx:id="type_id" layoutX="112.0" layoutY="224.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #7FFFD4;">
 					<effect>
 						<DropShadow />
 					</effect>
-				</TextField>
+				</ComboBox>
 				<Button layoutX="788.0" layoutY="31.0" mnemonicParsing="false" onAction="#updateEmployee" prefHeight="39.0" prefWidth="192.0" style="-fx-background-color: rgb(252,233,79);" text="Update Employee" textAlignment="CENTER" textFill="#f81515">
 					<effect>
 						<InnerShadow />

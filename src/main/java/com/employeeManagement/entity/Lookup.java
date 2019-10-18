@@ -6,6 +6,19 @@ public class Lookup {
 	private String name;
 	
 	
+	
+	
+	public Lookup() {
+		super();
+		
+	}
+	
+	public Lookup(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	public int getId() {
 		return id;
 	}
