@@ -23,9 +23,9 @@ import javafx.util.StringConverter;
 public class UpdateDelete_Controller implements Initializable {
 
 	@FXML
-	private TextField emp_id1;
+	private TextField emp_no1;
 	@FXML
-	private TextField emp_id;
+	private TextField emp_no;
 	@FXML
 	private TextField name;
 	@FXML
@@ -143,14 +143,14 @@ public class UpdateDelete_Controller implements Initializable {
 	public void getEmployeeById(ActionEvent e) throws IOException, ParseException {
 
 		
-		String sid = emp_id.getText();
-		int id = Integer.parseInt(sid);
+		String empNo = emp_no.getText();
+		int No = Integer.parseInt(empNo);
 
-		Employee emp = EmployeeDao.getEmployeeById(id);
+		Employee emp = EmployeeDao.getEmployeeById(No);
 		
-		emp_id1.setText(String.valueOf(emp.getEmp_id()));
+		emp_no1.setText(String.valueOf(emp.getEmp_no()));
 
-		if(id == emp.getEmp_id()) {
+		if(No == emp.getEmp_no()) {
 		name.setText(emp.getName());
 
 		int type = emp.getType_id();
@@ -162,7 +162,7 @@ public class UpdateDelete_Controller implements Initializable {
 		// type_id.setItems(FXCollections.observableArrayList(lookupDao.getLookup("emp_type",
 		// "id", type)));
 		// type_id.setText(String.valueOf(emp.getType_id()));
-		if (emp.getEmp_id() != 0) {
+		if (emp.getEmp_no() != 0) {
 			//type_id.setPromptText(type_id.getItems().get(type).getName());
 			type_id.setValue(type_id.getItems().get(type+1));
 			
@@ -177,7 +177,7 @@ public class UpdateDelete_Controller implements Initializable {
 		job_stability_decision_number.setText(String.valueOf(emp.getJob_stability_decision_number()));
 
 		// job_group_id.setText(String.valueOf(emp.getJob_group_id()));
-		if (emp.getEmp_id() != 0) {
+		if (emp.getEmp_no() != 0) {
 			
 			//job_group_id.setPromptText(job_group_id.getItems().get(groupId).getName());
 //			//job_group_id.setValue(new Lookup(0, job_group_id.getItems().get(groupId).getName()));
@@ -195,7 +195,7 @@ public class UpdateDelete_Controller implements Initializable {
 			System.out.println("careers ===> "+ x.getName());
 		});
 		// System.out.println(list);
-		if (emp.getEmp_id() != 0) {
+		if (emp.getEmp_no() != 0) {
 			//career_id.setPromptText(careers.get(1).getName());
 			if(careers.size() > 1) {
 			career_id.setValue( careers.get(1));
@@ -220,9 +220,10 @@ public class UpdateDelete_Controller implements Initializable {
 	}
 
 	public void updateEmployee(ActionEvent e) throws IOException, ParseException {
-		String sid = emp_id.getText();
+		String sid = emp_no1.getText();
+		
 		int id = Integer.parseInt(sid);
-
+		System.out.println("id---------->"+id);
 		// int EmpID = Integer.parseInt(emp_id1.getText());
 
 		String employeeName = name.getText();
@@ -245,7 +246,10 @@ public class UpdateDelete_Controller implements Initializable {
 		String employeeNotes = notes.getText();
 
 		Employee emp = new Employee();
-		emp.setEmp_id(id);
+		System.out.println("id222===>"+id);
+		
+		emp.setEmp_no(id);
+		
 		emp.setName(employeeName);
 
 		if (type_id.getValue() != null) {
@@ -279,7 +283,15 @@ public class UpdateDelete_Controller implements Initializable {
 
 		emp.setAddress(employeeAddress);
 		emp.setNotes(employeeNotes);
-
+        System.out.println("emp.getEmp_no()------>"+emp.getEmp_no());
+        
+        //  search  ÞíãÉ ÇáÈæßÓ ÈÊÇÚ Çá
+        // ÇáãÞÇÈá ááÑÞã Ïå idåäÇ ÈÞæáå ÎÏ ÑÞã ÇáãæÙÝ Çá Ýì ÈæßÓ ÇáÈÍË æåÇÊáì Çá    
+      
+        int emp_no1 = Integer.parseInt(emp_no.getText());
+		int emp_id = EmployeeDao.getEmpID(emp_no1);
+		emp.setEmp_id(emp_id);
+		System.out.println("emp_id=============>"+emp_id);
 		int status = EmployeeDao.update(emp);
 		
 
@@ -306,7 +318,7 @@ public class UpdateDelete_Controller implements Initializable {
 	}
 
 	public void deleteEmployee(ActionEvent e) throws IOException, ParseException {
-		String sid = emp_id.getText();
+		String sid = emp_no.getText();
 		int id = Integer.parseInt(sid);
 
 		int status = EmployeeDao.delete(id);
@@ -331,7 +343,7 @@ public class UpdateDelete_Controller implements Initializable {
 
 	public void clear() {
 		name.setText("");
-		emp_id1.setText("");
+		emp_no1.setText("");
 		type_id.setValue(new Lookup(0, ""));
 //		type_id.setValue("");
 		graduation_date.setText("");

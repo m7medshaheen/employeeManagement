@@ -23,7 +23,7 @@ public class EmployeeView_Controller implements Initializable {
 	@FXML
 	private TableView<Employee> table;
 	@FXML
-	private TableColumn<Employee, Integer> emp_id;
+	private TableColumn<Employee, Integer> emp_no;
 	@FXML
 	private TableColumn<Employee, String> name;
 	@FXML
@@ -77,7 +77,7 @@ public class EmployeeView_Controller implements Initializable {
 
 		
 		
-		emp_id.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("emp_id"));
+		emp_no.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("emp_no"));
 		name.setCellValueFactory(new PropertyValueFactory<Employee, String>("name"));
 		type_id.setCellValueFactory(new PropertyValueFactory<Employee, Integer>("type_id"));
 		graduation_date.setCellValueFactory(new PropertyValueFactory<Employee, String>("graduation_date"));

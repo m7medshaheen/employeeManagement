@@ -1,7 +1,7 @@
 package com.employeeManagement.entity;
 public class Employee {	
 	
-	private int emp_id;
+	private int emp_no;
 	private String name;
 	private int type_id;
 	private String graduation_date;
@@ -14,13 +14,22 @@ public class Employee {
 	private int career_id;
 	private String address;
 	private String notes;
+	private int emp_id;
 	
 	
-	public Employee(int emp_id, String name, int type_id, String graduation_date, String birth_date,
+	public int getEmp_id() {
+		return emp_id;
+	}
+
+	public void setEmp_id(int emp_id) {
+		this.emp_id = emp_id;
+	}
+
+	public Employee(int emp_no, String name, int type_id, String graduation_date, String birth_date,
 			String recruitment_date, int recruitment_decision_number, String job_stability_date,
 			int job_stability_decision_number, int job_group_id, int career_id, String address, String notes) {
 		super();
-		this.emp_id = emp_id;
+		this.emp_no = emp_no;
 		this.name = name;
 		this.type_id = type_id;
 		this.graduation_date = graduation_date;
@@ -40,11 +49,11 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getEmp_id() {
-		return emp_id;
+	public int getEmp_no() {
+		return emp_no;
 	}
-	public void setEmp_id(int emp_id) {
-		this.emp_id = emp_id;
+	public void setEmp_no(int emp_no) {
+		this.emp_no = emp_no;
 	}
 	public String getName() {
 		return name;

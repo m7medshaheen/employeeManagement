@@ -24,7 +24,7 @@
 						<Font name="Calibri Bold" size="18.0" />
 					</font>
 				</Label>
-				<Label layoutX="16.0" layoutY="87.0" text="employee_id">
+				<Label layoutX="16.0" layoutY="87.0" text="employee_no">
 					<font>
 						<Font name="System Bold" size="12.0" />
 					</font>
@@ -94,7 +94,7 @@
 						<DropShadow />
 					</effect>
 				</TextField>
-				<TextField fx:id="emp_id" layoutX="114.0" layoutY="83.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #7FFFD4;">
+				<TextField fx:id="emp_no" layoutX="114.0" layoutY="83.0" prefHeight="25.0" prefWidth="210.0" style="-fx-background-color: #7FFFD4;">
 					<effect>
 						<DropShadow />
 					</effect>

@@ -103,7 +103,7 @@ public class TrainingDao {
 			Connection con = DBConnection.getDB().getConnection();
 			
 			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.UPDATE_EMPLOYEE_QUERY);
-			preparedStatement.setInt(1, emp.getEmp_id());
+			preparedStatement.setInt(1, emp.getEmp_no());
 			preparedStatement.setString(2, emp.getName());
 			preparedStatement.setInt(3, emp.getType_id());
 			preparedStatement.setString(4, emp.getGraduation_date());
@@ -116,7 +116,7 @@ public class TrainingDao {
 			preparedStatement.setInt(11, emp.getCareer_id());
 			preparedStatement.setString(12, emp.getAddress());
 			preparedStatement.setString(13, emp.getNotes());
-			preparedStatement.setInt(14, emp.getEmp_id());
+			preparedStatement.setInt(14, emp.getEmp_no());
 		
 			st = preparedStatement.executeUpdate();
 			//con.close();
@@ -158,7 +158,7 @@ public class TrainingDao {
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				emp.setEmp_id(resultSet.getInt(1));
+				emp.setEmp_no(resultSet.getInt(1));
 				emp.setName(resultSet.getString(2));
 				emp.setType_id(resultSet.getInt(3));
 				emp.setGraduation_date(resultSet.getString(4));
@@ -193,7 +193,7 @@ public class TrainingDao {
 			//	employees.add(employee);
 				Employee emp = new Employee();
 
-				emp.setEmp_id(resultSet.getInt(1));
+				emp.setEmp_no(resultSet.getInt(1));
 				emp.setName(resultSet.getString(2));
 				emp.setType_id(resultSet.getInt(3));
 				emp.setGraduation_date(resultSet.getString(4));

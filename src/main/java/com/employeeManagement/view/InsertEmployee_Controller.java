@@ -28,7 +28,7 @@ import javafx.util.StringConverter;
 public class InsertEmployee_Controller implements Initializable {
 
 	@FXML
-	private TextField emp_id;
+	private TextField emp_no;
 	@FXML
 	private TextField name;
 
@@ -158,7 +158,7 @@ public class InsertEmployee_Controller implements Initializable {
 		
 		//int typeId = type_id.getValue() == null ? null : type_id.getValue().getId();
 
-		String empId = emp_id.getText();
+		String empNo = emp_no.getText();
 		
 		Lookup typeIdLookup = type_id.getValue();
 		Lookup jobGroupIdLookup = job_group_id.getValue();
@@ -193,7 +193,7 @@ public class InsertEmployee_Controller implements Initializable {
 		int job_Stability_Decision_Number = Integer.parseInt(jobStabilityDecisionNumber);
 		int job_Group_Id = jobGroupId;
 		int career_Id = careerId;
-		int emp_Id = Integer.parseInt(empId);
+		int emp_No = Integer.parseInt(empNo);
 
 		String graduation_Date = graduationDate.toString();
 		String birth_Date = birthDate.toString();
@@ -201,7 +201,7 @@ public class InsertEmployee_Controller implements Initializable {
 		String jobStability_Date = jobStabilityDate.toString();
 
 		Employee emp = new Employee();
-		emp.setEmp_id(emp_Id);
+		emp.setEmp_no(emp_No);
 		emp.setName(employeeName);
 		emp.setType_id(type_Id);
 		emp.setGraduation_date(graduation_Date);

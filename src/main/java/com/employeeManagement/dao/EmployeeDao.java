@@ -52,10 +52,10 @@ public class EmployeeDao {
 	private Employee getEmployee(ResultSet resultSet) throws SQLException {
 		Employee employee = new Employee();
 
-		int emp_id = resultSet.getInt(ColumnName.EMPLOYEE_ID);
+		int emp_no = resultSet.getInt(ColumnName.EMPLOYEE_NO);
 		String name = resultSet.getString(ColumnName.EMPLOYEE_NAME);
 
-		employee.setEmp_id(emp_id);
+		employee.setEmp_no(emp_no);
 		employee.setName(name);
 
 		return employee;
@@ -69,7 +69,7 @@ public class EmployeeDao {
 		try {
 			Connection con = DBConnection.getDB().getConnection();
 			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.INSERT_EMPLOYEE_QUERY);
-			preparedStatement.setInt(1, emp.getEmp_id());
+			preparedStatement.setInt(1, emp.getEmp_no());
 			preparedStatement.setString(2, emp.getName());
 //			if (emp.getType_id() != 0) {
 			System.err.println("typeId:: "+ emp.getType_id());
@@ -103,7 +103,7 @@ public class EmployeeDao {
 			Connection con = DBConnection.getDB().getConnection();
 
 			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.UPDATE_EMPLOYEE_QUERY);
-			preparedStatement.setInt(1, emp.getEmp_id());
+			preparedStatement.setInt(1, emp.getEmp_no());
 			preparedStatement.setString(2, emp.getName());
 			preparedStatement.setInt(3, emp.getType_id());
 			preparedStatement.setString(4, emp.getGraduation_date());
@@ -116,6 +116,7 @@ public class EmployeeDao {
 			preparedStatement.setInt(11, emp.getCareer_id());
 			preparedStatement.setString(12, emp.getAddress());
 			preparedStatement.setString(13, emp.getNotes());
+			System.out.println("emp_id22222=============>"+emp.getEmp_id());
 			preparedStatement.setInt(14, emp.getEmp_id());
 
 			st = preparedStatement.executeUpdate();
@@ -157,7 +158,7 @@ public class EmployeeDao {
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
-				emp.setEmp_id(resultSet.getInt(1));
+				emp.setEmp_no(resultSet.getInt(1));
 				emp.setName(resultSet.getString(2));
 				emp.setType_id(resultSet.getInt(3));
 				emp.setGraduation_date(resultSet.getString(4));
@@ -192,7 +193,7 @@ public class EmployeeDao {
 				// employees.add(employee);
 				Employee emp = new Employee();
 
-				emp.setEmp_id(resultSet.getInt(1));
+				emp.setEmp_no(resultSet.getInt(1));
 				emp.setName(resultSet.getString(2));
 				emp.setType_id(resultSet.getInt(3));
 				emp.setGraduation_date(resultSet.getString(4));
@@ -213,5 +214,31 @@ public class EmployeeDao {
 		}
 		return employees;
 	}
+	
+	public static int getEmpID(int empNo) {
+		int st = 0;
+
+		try {
+			Connection con = DBConnection.getDB().getConnection();
+			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.GET_EMP_ID);
+			preparedStatement.setInt(1, empNo);
+
+			ResultSet resultSet = preparedStatement.executeQuery();
+			while (resultSet.next()) {
+				// Employee employee = getEmployee(resultSet);
+				// employees.add(employee);
+				//Employee emp = new Employee();
+
+				st=resultSet.getInt(1);
+			}
+			// con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return st;
+
+	}
+
 
 }

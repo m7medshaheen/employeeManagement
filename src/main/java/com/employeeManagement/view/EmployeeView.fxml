@@ -4,42 +4,25 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="546.0" prefWidth="979.0"
-	xmlns="http://javafx.com/javafx/10.0.1"
-	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="com.employeeManagement.view.EmployeeView_Controller">
+<AnchorPane prefHeight="546.0" prefWidth="979.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.employeeManagement.view.EmployeeView_Controller">
 	<children>
 		<AnchorPane prefHeight="501.0" prefWidth="1034.0">
 			<children>
-				<TableView fx:id="table" editable="true" layoutX="2.0"
-					layoutY="47.0" prefHeight="454.0" prefWidth="1087.0">
+				<TableView fx:id="table" editable="true" layoutX="2.0" layoutY="47.0" prefHeight="454.0" prefWidth="1087.0">
 					<columns>
-						<TableColumn fx:id="emp_id" prefWidth="55.0"
-							resizable="false" text="id" />
-						<TableColumn fx:id="name" prefWidth="60.0"
-							resizable="false" text="name" />
-						<TableColumn fx:id="type_id" prefWidth="60.0"
-							resizable="false" text="type_id" />
-						<TableColumn fx:id="graduation_date" prefWidth="100.0"
-							resizable="false" text="graduation_date" />
-						<TableColumn fx:id="birth_date" prefWidth="77.0"
-							resizable="false" text="birth_date" />
-						<TableColumn fx:id="recruitment_date"
-							prefWidth="102.0" resizable="false" text="recruitment_date" />
-						<TableColumn fx:id="recruitment_decision_number"
-							prefWidth="127.0" resizable="false" text="recruitment_number" />
-						<TableColumn fx:id="job_stability_date"
-							prefWidth="112.0" resizable="false" text="job_stability_date" />
-						<TableColumn fx:id="job_stability_decision_number"
-							prefWidth="128.0" resizable="false" text="job_stability_number" />
-						<TableColumn fx:id="job_group_id" prefWidth="83.0"
-							resizable="false" text="job_group_id" />
-						<TableColumn fx:id="career_id" prefWidth="70.0"
-							resizable="false" text="career_id" />
-						<TableColumn fx:id="address" prefWidth="55.0"
-							resizable="false" text="address" />
-						<TableColumn fx:id="notes" prefWidth="56.0"
-							resizable="false" text="notes" />
+						<TableColumn fx:id="emp_no" prefWidth="55.0" resizable="false" text="emp_no" />
+						<TableColumn fx:id="name" prefWidth="60.0" resizable="false" text="name" />
+						<TableColumn fx:id="type_id" prefWidth="60.0" resizable="false" text="type_id" />
+						<TableColumn fx:id="graduation_date" prefWidth="100.0" resizable="false" text="graduation_date" />
+						<TableColumn fx:id="birth_date" prefWidth="77.0" resizable="false" text="birth_date" />
+						<TableColumn fx:id="recruitment_date" prefWidth="102.0" resizable="false" text="recruitment_date" />
+						<TableColumn fx:id="recruitment_decision_number" prefWidth="127.0" resizable="false" text="recruitment_number" />
+						<TableColumn fx:id="job_stability_date" prefWidth="112.0" resizable="false" text="job_stability_date" />
+						<TableColumn fx:id="job_stability_decision_number" prefWidth="128.0" resizable="false" text="job_stability_number" />
+						<TableColumn fx:id="job_group_id" prefWidth="83.0" resizable="false" text="job_group_id" />
+						<TableColumn fx:id="career_id" prefWidth="70.0" resizable="false" text="career_id" />
+						<TableColumn fx:id="address" prefWidth="55.0" resizable="false" text="address" />
+						<TableColumn fx:id="notes" prefWidth="56.0" resizable="false" text="notes" />
 
 					</columns>
 					<columnResizePolicy>
