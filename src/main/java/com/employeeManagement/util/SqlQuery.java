@@ -4,7 +4,8 @@ public class SqlQuery {
 
 	public static final String GET_ALL_EMPLOYEES_QUERY = "SELECT * FROM employee";
 	public static final String GET_ALL_TRAINING_QUERY = "SELECT * FROM training";
-	public static final String FIND_EMPLOYEE_BY_ID_QUERY = "SELECT * FROM employee where emp_no = ?";
+	public static final String FIND_EMPLOYEE_BY_NUM_QUERY = "SELECT * FROM employee where emp_no = ?";
+	public static final String GET_TRIANING_ID = "SELECT MAX(training_id) FROM training";
 	public static final String GET_ALL_USERS_QUERY = "SELECT * FROM user";
 
 	public static final String INSERT_EMPLOYEE_QUERY = "INSERT INTO employee(emp_no,`name`,type_id,graduation_date,"

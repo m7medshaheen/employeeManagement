@@ -163,7 +163,7 @@
                   <DropShadow />
                </effect>
             </TextField>
-            <TextField fx:id="emp_id" layoutX="18.0" layoutY="15.0" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #7FFFD4;">
+            <TextField fx:id="emp_num" layoutX="18.0" layoutY="15.0" prefHeight="25.0" prefWidth="92.0" style="-fx-background-color: #7FFFD4;">
                <effect>
                   <DropShadow />
                </effect>

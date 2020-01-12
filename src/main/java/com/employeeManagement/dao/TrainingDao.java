@@ -14,7 +14,7 @@ import com.employeeManagement.util.ColumnName;
 import com.employeeManagement.util.SqlQuery;
 
 public class TrainingDao {
-	
+
 	public static List<Training> getAllTraining() {
 		List<Training> trainings = new ArrayList<>();
 		Connection con = DBConnection.getDB().getConnection();
@@ -32,12 +32,14 @@ public class TrainingDao {
 		return trainings;
 	}
 
+	/////////////////////////////////////////////////////////////////////////////////
+
 	public static List<Training> findTrainingById(String id) {
 		List<Training> trainings = new ArrayList<>();
 		Connection con = DBConnection.getDB().getConnection();
 		try {
 
-			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_ID_QUERY);
+			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_NUM_QUERY);
 			preparedStatement.setString(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
@@ -50,6 +52,8 @@ public class TrainingDao {
 		return trainings;
 	}
 
+///////////////////////////////////////////////////////////////////////////////////////////
+
 	public static Training getTraining(ResultSet resultSet) throws SQLException {
 		Training training = new Training();
 
@@ -61,9 +65,33 @@ public class TrainingDao {
 
 		return training;
 	}
-	 
-/////////////////////////////////////////////////////////////////////////////////////
-	  
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+	public static Training getTrainingId() {
+		// List<Employee> employees = new ArrayList<>();
+		Training tra = new Training();
+		Connection con = DBConnection.getDB().getConnection();
+		try {
+
+			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.GET_TRIANING_ID);
+			
+			ResultSet resultSet = preparedStatement.executeQuery();
+			if (resultSet.next()) {
+			
+				tra.setTraining_id(resultSet.getInt(1));
+
+			}
+			// con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+		}
+		return tra;
+	}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
 	public static int save(Training traing) {
 		int st = 0;
 
@@ -83,10 +111,9 @@ public class TrainingDao {
 			preparedStatement.setInt(11, traing.getGuarantor_id());
 			preparedStatement.setString(12, traing.getGuarantor_name());
 			preparedStatement.setInt(13, traing.getTraining_decision_number());
-			
 
 			st = preparedStatement.executeUpdate();
-		//	con.close();
+			// con.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -101,7 +128,7 @@ public class TrainingDao {
 
 		try {
 			Connection con = DBConnection.getDB().getConnection();
-			
+
 			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.UPDATE_EMPLOYEE_QUERY);
 			preparedStatement.setInt(1, emp.getEmp_no());
 			preparedStatement.setString(2, emp.getName());
@@ -117,17 +144,18 @@ public class TrainingDao {
 			preparedStatement.setString(12, emp.getAddress());
 			preparedStatement.setString(13, emp.getNotes());
 			preparedStatement.setInt(14, emp.getEmp_no());
-		
+
 			st = preparedStatement.executeUpdate();
-			//con.close();
+			// con.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			//System.out.println("errrrrrrrrrrrrror update");
+			// System.out.println("errrrrrrrrrrrrror update");
 		}
 		return st;
 
 	}
+
 	public static int delete(int id) {
 		int st = 0;
 
@@ -135,10 +163,9 @@ public class TrainingDao {
 			Connection con = DBConnection.getDB().getConnection();
 			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.DELETE_EMPLOYEE_QUERY);
 			preparedStatement.setInt(1, id);
-			
 
 			st = preparedStatement.executeUpdate();
-			//con.close();
+			// con.close();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -146,15 +173,14 @@ public class TrainingDao {
 		return st;
 
 	}
-	
-	
+
 	public static Employee getEmployeeById(int id) {
-		//List<Employee> employees = new ArrayList<>();
+		// List<Employee> employees = new ArrayList<>();
 		Employee emp = new Employee();
 		Connection con = DBConnection.getDB().getConnection();
 		try {
 
-			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_ID_QUERY);
+			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_NUM_QUERY);
 			preparedStatement.setInt(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
@@ -171,26 +197,26 @@ public class TrainingDao {
 				emp.setCareer_id(resultSet.getInt(11));
 				emp.setAddress(resultSet.getString(12));
 				emp.setNotes(resultSet.getString(13));
-				
+
 			}
-		//	con.close();
+			// con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-			
+
 		}
 		return emp;
 	}
-	
+
 	public static List<Employee> getEmployee() {
 		List<Employee> employees = new ArrayList<Employee>();
 		Connection con = DBConnection.getDB().getConnection();
 		try {
 
-			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_ID_QUERY);
+			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_NUM_QUERY);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
-			//	Employee employee = getEmployee(resultSet);
-			//	employees.add(employee);
+				// Employee employee = getEmployee(resultSet);
+				// employees.add(employee);
 				Employee emp = new Employee();
 
 				emp.setEmp_no(resultSet.getInt(1));
@@ -206,8 +232,7 @@ public class TrainingDao {
 				emp.setCareer_id(resultSet.getInt(11));
 				emp.setAddress(resultSet.getString(12));
 				emp.setNotes(resultSet.getString(13));
-			
-				
+
 			}
 			con.close();
 		} catch (SQLException e) {
@@ -215,7 +240,5 @@ public class TrainingDao {
 		}
 		return employees;
 	}
-	
-
 
 }

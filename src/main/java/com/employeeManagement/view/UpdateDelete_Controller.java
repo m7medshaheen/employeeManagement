@@ -146,7 +146,7 @@ public class UpdateDelete_Controller implements Initializable {
 		String empNo = emp_no.getText();
 		int No = Integer.parseInt(empNo);
 
-		Employee emp = EmployeeDao.getEmployeeById(No);
+		Employee emp = EmployeeDao.getEmployeeByNUM(No);
 		
 		emp_no1.setText(String.valueOf(emp.getEmp_no()));
 

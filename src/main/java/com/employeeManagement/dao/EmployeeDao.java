@@ -36,7 +36,7 @@ public class EmployeeDao {
 		Connection con = DBConnection.getDB().getConnection();
 		try {
 
-			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_ID_QUERY);
+			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_NUM_QUERY);
 			preparedStatement.setString(1, id);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
@@ -148,14 +148,14 @@ public class EmployeeDao {
 
 	}
 
-	public static Employee getEmployeeById(int id) {
+	public static Employee getEmployeeByNUM(int empNum) {
 		// List<Employee> employees = new ArrayList<>();
 		Employee emp = new Employee();
 		Connection con = DBConnection.getDB().getConnection();
 		try {
 
-			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_ID_QUERY);
-			preparedStatement.setInt(1, id);
+			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_NUM_QUERY);
+			preparedStatement.setInt(1, empNum);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			if (resultSet.next()) {
 				emp.setEmp_no(resultSet.getInt(1));
@@ -171,6 +171,7 @@ public class EmployeeDao {
 				emp.setCareer_id(resultSet.getInt(11));
 				emp.setAddress(resultSet.getString(12));
 				emp.setNotes(resultSet.getString(13));
+				emp.setEmp_id(resultSet.getInt(14));
 
 			}
 			// con.close();
@@ -186,7 +187,7 @@ public class EmployeeDao {
 		Connection con = DBConnection.getDB().getConnection();
 		try {
 
-			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_ID_QUERY);
+			PreparedStatement preparedStatement = con.prepareStatement(SqlQuery.FIND_EMPLOYEE_BY_NUM_QUERY);
 			ResultSet resultSet = preparedStatement.executeQuery();
 			while (resultSet.next()) {
 				// Employee employee = getEmployee(resultSet);

@@ -29,7 +29,7 @@ import javafx.util.StringConverter;
 public class InsertTraining_Controller implements Initializable {
 
 	@FXML
-	private TextField emp_id;
+	private TextField emp_num;
 	@FXML
 	private TextField name;
 	@FXML
@@ -62,6 +62,9 @@ public class InsertTraining_Controller implements Initializable {
 
 	private LookupDao lookupDao;
 
+	
+	Employee emp = new Employee();
+	
 	public InsertTraining_Controller() {
 		// type_id=new ComboBox<Emp_type>();
 		training_type_id = new ComboBox<Lookup>();
@@ -79,16 +82,17 @@ public class InsertTraining_Controller implements Initializable {
 		// ãäÝÐ ÇáÊÏÑíÈ
 		getTrainingOutlet();
 		
+		
 
 	}
 	
 	
 	public void getEmployeeById(ActionEvent e) throws IOException, ParseException {
 
-		String sid = emp_id.getText();
-		int id = Integer.parseInt(sid);
+		String EMP_NUM = emp_num.getText();
+		int EMPNUM = Integer.parseInt(EMP_NUM);
 
-		Employee emp = EmployeeDao.getEmployeeById(id);
+		 emp = EmployeeDao.getEmployeeByNUM(EMPNUM);
 		
 		name.setText(emp.getName());
 	}
@@ -152,7 +156,7 @@ public class InsertTraining_Controller implements Initializable {
 
 	public void insertData(ActionEvent e) throws IOException {
 
-		String trainingId = training_id.getText();
+		//String trainingId = training_id.getText();
 		int trainingTypeId = training_type_id.getValue().getId();
 		int trainingOutletId = training_outlet_id.getValue().getId();
 		String trainingName = training_name.getText();
@@ -167,10 +171,9 @@ public class InsertTraining_Controller implements Initializable {
 		String trainingDecisionNumber = training_decision_number.getText();
 
 		
-		int empId = Integer.parseInt(emp_id.getText());
-		
-		
-		int training_Id = Integer.parseInt(trainingId);
+		//int empId = Integer.parseInt(emp_num.getText());
+		int empId = emp.getEmp_id();
+		//int training_Id = Integer.parseInt(trainingId);
 		int training_TypeId = trainingTypeId;
 		int training_OutletId = trainingOutletId;
 		String startTraining_Date = startTrainingDate.toString();
@@ -183,9 +186,10 @@ public class InsertTraining_Controller implements Initializable {
 
 		Training training = new Training();
 		
+		
 		Employee_Training empTraining = new Employee_Training();
 
-		training.setTraining_id(training_Id);
+		//training.setTraining_id(training_Id);
 		training.setTraining_type_id(training_TypeId);
 		training.setTraining_outlet_id(training_OutletId);
 		training.setTraining_name(trainingName);
@@ -199,14 +203,20 @@ public class InsertTraining_Controller implements Initializable {
 		training.setGuarantor_name(guarantorName);
 		training.setTraining_decision_number(trainingDecision_Number);
 		
-		empTraining.setTraining_id(training_Id);
-		empTraining.setEmp_id(empId);
+		
 		
 
 		
 		int status = TrainingDao.save(training);
 		
-		Employee_TrainingDao.save(empTraining);
+		
+		//int training_Id = training.getTraining_id();
+		
+	//	System.out.println("training id =====>"+training_Id);
+		
+	
+		
+		//Employee_TrainingDao.save(empTraining);
 
 		if (status > 0) {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -215,6 +225,13 @@ public class InsertTraining_Controller implements Initializable {
 			alert.setContentText("Record updated successfully!");
 
 			alert.showAndWait();
+			 training = TrainingDao.getTrainingId();
+			empTraining.setTraining_id(training.getTraining_id());
+			
+			empTraining.setEmp_id(empId);
+			
+			Employee_TrainingDao.save(empTraining);
+
 		} else {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Data Insert");
